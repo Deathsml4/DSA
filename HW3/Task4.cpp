@@ -62,8 +62,8 @@ int main(){
     Queue queue;
     int n;
     cin >> n;
-    int i = 0;
-    while(i < n){
+    int cnt(0);
+    while(cnt < n){
         string s;
         int x;
         cin >> s;
@@ -73,7 +73,7 @@ int main(){
         }else {
             queue.dequeue();
         }
-        i++;
+        cnt++;
     }
 
     queue.print();

@@ -20,28 +20,36 @@ struct List {
 		Node* newNode = new Node(x);
 		Node* q = head;
 		if (head == NULL) {
+			head = newNode;
+			return;
 		}
-		else {
-			for (int i = 0 ; q->next != NULL ; i++) {
-				if (p == i) {
-					break;
-				}
-				q = q->next;
-			}
-		}
-		q->next = newNode;
-	}
-	void _delete(int p) {
-		Node* q = head;
-		for (int i = 0 ; q->next != NULL; i++) {
-			if (p == i) {
+		
+		for (int i = 0 ; q->next != NULL ; i++) {
+			if (p-1 == i) {
 				break;
 			}
 			q = q->next;
 		}
-		Node* oldNode = q;
-		q = q->next;
-		delete oldNode;
+		
+		newNode->next = q->next;
+		q->next = newNode;
+	}
+	void _delete(int p) {
+		Node* q = head;
+		if (head == NULL) return;
+		if (head->next == NULL) {
+			delete q;
+			head = NULL;
+		}
+		for (int i = 0 ; q->next != NULL; i++) {
+			if (p-1 == i) {
+				break;
+			}
+			q = q->next;
+		}
+		Node* deletingNode = q->next;
+		q->next = deletingNode->next;
+		delete deletingNode;
 	}
 	void print() {
 		for (Node* p = head ; p != NULL ; p = p->next) {
@@ -66,7 +74,7 @@ int main() {
 			cin >> p;
 			list._delete(p);
 		}
-		getline(cin,s);
+		//getline(cin,s);
 	}
 	list.print();
 	return 0;
