@@ -104,7 +104,7 @@ int main() {
 	
 	stk.print();
 	cout << endl;
-	for (int i = 0 ; i < n ; i ++) {
+	for (int i = 0 ; i < n ; i++) {
 		cout << stk.pop() << " ";
 	}
 	return 0;
